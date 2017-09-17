@@ -1,0 +1,36 @@
+{
+  "name": "tweets-saver",
+  "version": "1.0.0",
+  "description": "Fetch tweets and save into DB. ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+    "start": "npm run build && nodemon dist/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kunal12422/tweet-saver.git"
+  },
+  "keywords": [
+    "twitter",
+    "mongo",
+    "node"
+  ],
+  "author": "Kunal Sharma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kunal12422/tweet-saver/issues"
+  },
+  "homepage": "https://github.com/kunal12422/tweet-saver#readme",
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "express": "^4.15.4",
+    "morgan": "^1.8.2",
+    "rimraf": "^2.6.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1"
+  }
+}
