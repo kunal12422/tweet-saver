@@ -24,10 +24,12 @@
   },
   "homepage": "https://github.com/kunal12422/tweet-saver#readme",
   "dependencies": {
+    "agenda": "^1.0.0",
     "body-parser": "^1.18.1",
     "express": "^4.15.4",
     "morgan": "^1.8.2",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "twitter": "^1.7.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
