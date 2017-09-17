@@ -5,15 +5,13 @@ const router = express.Router()
 router.get('/',(req,res)=>{
     res.send("working");
 });
-// router.get('/start',(req,res)=>{
-//     createAgenda();
-// });
-// router.get('/:user', (req, res) => {
-//     tweetController.getByUser(req, res);
-// });
 
-// router.get('/retweetCount', (req, res) => {
-//     tweetController.getByRetweet(req, res);
-// });
+router.get('/user/:user', (req, res) => {
+    tweetController.getByUser(req, res);
+});
+
+router.get('/sort_rt', (req, res) => {
+    tweetController.sortByReTweet(req, res);
+});
 
 export default router;

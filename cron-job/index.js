@@ -1,6 +1,6 @@
 import Scheduler from "./scheduler";
 
     Scheduler((err,agenda)=>{
-        agenda.every('5 seconds','fetch tweets');
+        agenda.every('30 minutes','fetch tweets');
         agenda.start();
     });
