@@ -1,4 +1,4 @@
-## A scheduler for fetching tweets and save them into MongoDb.
+## Fetching tweets and save them into MongoDb with scheduler.
 ### Prerequisite:
 ```
 Node
