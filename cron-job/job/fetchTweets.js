@@ -1,4 +1,7 @@
 import Twitter from "twitter";
+import _ from "lodash";
+import Tweet from "../../models/tweet.model";
+import connectToDb from '../../db/connect';
 
 const client = new Twitter({
     consumer_key: process.env.TWITTER_CONSUMER_KEY || 'xyxMM7z1Moao1IP18RjHSuKk1',
@@ -9,8 +12,44 @@ const client = new Twitter({
 
 export default function(agenda){
     agenda.define('fetch tweets',(job,done)=>{
-        client.get('search/tweets',{q:'bitcoin'},(err,tweets,response)=>{
-                console.log(tweets);
+        console.log("----------------------------------------------");
+        connectToDb();
+        client.get('search/tweets',{q:'bitcoin+blockchain'},(err,tweets,response)=>{
+            
+                let allTweets = tweets["statuses"];
+
+                _.forEach(allTweets, (item)=>{
+                   
+
+                        Tweet.findOne({id:item["id"]}).then((err,tweet)=>{
+                            if(!err){
+                                if(!tweet){
+                                     tweet = new Tweet({
+                                        created_at:item["created_at"],
+                                        id: item["id"],
+                                        text:item["text"],
+                                        user_id:item["user"]["id"],
+                                        user_name:item["user"]["screen_name"],
+                                        user_description:item["user"]["description"],
+                                        retweet_count:item["retweet_count"]
+                                    });
+                                }
+                                tweet.save() 
+                                 .then(saveobj =>{
+                                    console.log("saved.. ");
+                                 })
+                                .catch((err)=>{
+                                    throw new Error(err);
+                                });
+                            }
+             
+                });
+                
         });
-    })
+        done();
+    });
+        console.log("----------------------------------------------");
+        console.log("----------------------------------------------");
+        console.log("----------------------------------------------");
+    });
 };

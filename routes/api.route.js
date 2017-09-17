@@ -1,8 +1,10 @@
 
 import express from "express";
 import tweetController from "../controllers/tweet.controllers"
-import createAgenda from "../cron-job";
 const router = express.Router()
+router.get('/',(req,res)=>{
+    res.send("working");
+});
 // router.get('/start',(req,res)=>{
 //     createAgenda();
 // });
